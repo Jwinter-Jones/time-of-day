@@ -78,7 +78,7 @@
 	  <img src="images/afternoon.jpg" alt="time of day pic" id="mypic" class="flexible" />
      </main>
     <footer>
-      <small>&copy; 2013, All Rights Reserved ~
+      <small id="copyright">, All Rights Reserved ~
       <a href="https://validator.w3.org/check/referer" target="_blank">Valid HTML</a> ~
       <a href="https://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">Valid CSS</a>
       </small>
@@ -90,6 +90,7 @@
 		let myGreeting = "";
 		let myColor = "";
 		let myPic = "images/";
+		let dayOfTheWeek = "";
 
 		if(myHour > 12){
 			myGreeting = "Good Afternoon!";
@@ -99,26 +100,47 @@
 			myColor = "yellow";
 		}
 
+		if (myDate.getDay() == 0){
+			dayOftheWeek = "Sunday ";
+		}
+		else if(myDate.getDay() == 1){
+			dayOfTheWeek = "Monday ";
+		}
+		else if(myDate.getDay() == 2){
+			dayOfTheWeek = "Tuesday ";
+		}
+		else if(myDate.getDay() == 3){
+			dayOfTheWeek = "Wednesday ";
+		}
+		else if(myDate.getDay() == 4){
+			dayOfTheWeek = "Thursday ";
+		}
+		else if(myDate.getDay() == 5){
+			dayOfTheWeek = "Friday ";
+		}
+		else{
+			dayOfTheWeek = "Saturday ";
+		}
 		//TEST ONLY - REMOVE THIS
-		myHour = 3;
+		//myHour = 3;
 
 		if(myHour >= 5 && myHour < 12){
-			myGreeting = "Good Morning?";
+			myGreeting = "Good " + dayOfTheWeek + "Morning?";
 			myColor = "yellow";
 			myPic += "morning.jpg";
 		}
-		else if(myHour >= 12 && myHour < 17){
-			myGreeting = "Good afternoon?";
+		else if(myHour >= 12 && myHour < 18){
+			myGreeting = "Good " + dayOfTheWeek + "afternoon?";
 			myColor = "orange";
 			myPic += "afternoon.jpg";
 		}
-		else if(myHour >= 17 && myHour < 20){
-			myGreeting = "Good evening?";
+		else if(myHour >= 18 && myHour < 23){
+			myGreeting = "Good " + dayOfTheWeek + "evening?";
 			myColor = "skyblue";
 			myPic += "evening.jpg";
 		}
 		else{
-			myGreeting = "Good night?";
+			myGreeting = "Good " + dayOfTheWeek + "night?";
 			myColor = "lightgray";
 			myPic += "night.jpg";
 		}
@@ -126,6 +148,7 @@
 		document.getElementById("mydiv").innerHTML = myGreeting;
 		document.body.style.backgroundColor = myColor;
 		document.getElementById("mypic").src = myPic;
+		document.getElementById("copyright").innerHTML = "&copy; 2013 - " + myDate.getFullYear() + document.getElementById("copyright").innerHTML;
 
 
 
